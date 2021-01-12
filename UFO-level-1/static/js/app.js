@@ -5,7 +5,7 @@ var tbody = d3.select("tbody");
 // YOUR CODE HERE!
 
 //function for buildtable 
-function buildtable(table){
+function createtable(table){
 table.forEach((ufoReport)=>{
     var row = tbody.append("tr");
     Object.entries(ufoReport).forEach(([key,value])=>{
@@ -25,17 +25,20 @@ function runEnter(){
     //prevent from refreshing
     d3.event.preventDefault();
     var inputElement = d3.select("#datetime");
-    let dateValue = inputElement.property("value");
+    var dateValue = inputElement.property("value");
 
     // if a date exist, filter table to match the date input 
     if (dateValue) {
         filterdata = tableData.filter(table=> table.datetime === dateValue);
+        tbody.html("");
     }
-    //remove non-search dates 
-    tbody.html("");
+    // if no date input, then show table
+    else{
+        filterdata = tableData
+    }
     // run buildtable function for the filtertable
-    buildtable(filterdata);
+    createtable(filterdata);
 
     console.log(filterdata);
 }
-buildtable(tableData);
+createtable(tableData);
