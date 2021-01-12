@@ -6,9 +6,9 @@ var tbody = d3.select("tbody");
 
 //function for buildtable 
 function createtable(table){
-table.forEach((ufoReport)=>{
-    var row = tbody.append("tr");
-    Object.entries(ufoReport).forEach(([key,value])=>{
+    table.forEach((ufoReport)=>{
+        var row = tbody.append("tr");
+        Object.entries(ufoReport).forEach(([key,value])=>{
         row.append("td").text(value);
     });
     });
@@ -24,18 +24,20 @@ form.on("submit",runEnter);
 function runEnter(){
     //prevent from refreshing
     d3.event.preventDefault();
-    var inputElement = d3.select("#datetime");
-    var dateValue = inputElement.property("value");
+    var dateElement = d3.select("#datetime");
+    var dateValue = dateElement.property("value");
 
     // if a date exist, filter table to match the date input 
     if (dateValue) {
         filterdata = tableData.filter(table=> table.datetime === dateValue);
-        tbody.html("");
+        
     }
     // if no date input, then show table
     else{
         filterdata = tableData
+        
     }
+    tbody.html("");
     // run buildtable function for the filtertable
     createtable(filterdata);
 

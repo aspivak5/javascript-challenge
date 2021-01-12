@@ -12,7 +12,7 @@ function createtable(table){
             row.append("td").text(value);
         });
         });
-    };
+};
     
 var button = d3.select("#filter-btn");
 var form = d3.select("#form");
@@ -43,34 +43,37 @@ function runEnter(){
     // if a filter exist, filter table to match the filter input
     if (cityValue) {
         filterdata = tableData.filter(table=> table.city === cityValue.toLowerCase());
-        tbody.html("");
+        //tbody.html("");
     }
     else if (dateValue) {
         filterdata = tableData.filter(table=> table.datetime === dateValue);
-        tbody.html("");
+        //tbody.html("");
     }
    
     else if (stateValue) {
         filterdata = tableData.filter(table=> table.state === stateValue.toLowerCase());
-        tbody.html("");
+        //tbody.html("");
     }
     else if (countryValue) {
         filterdata = tableData.filter(table=> table.country === countryValue.toLowerCase());
-        tbody.html("");
+        //tbody.html("");
     }
     else if (shapeValue) {
         filterdata = tableData.filter(table=> table.shape === shapeValue.toLowerCase());
-        tbody.html("");
+        //tbody.html("");
     }
     // if no date input, then show table
     else{
         filterdata = tableData
-        tbody.html("")
+        //tbody.html("")
     }
+    
+    tbody.html("")
 
     // run buildtable function for the filtertable
     createtable(filterdata);
 
     console.log(filterdata);
 }
-createtable(tableData);
+createtable(tableData); 
+
