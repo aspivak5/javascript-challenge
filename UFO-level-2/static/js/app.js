@@ -18,7 +18,8 @@ var button = d3.select("#filter-btn");
 var form = d3.select("#form");
     
 button.on("click",runEnter);
-form.on("submit",runEnter);
+
+form.on("change",runEnter);
 
 
 //function for form
